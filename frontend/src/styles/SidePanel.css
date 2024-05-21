@@ -1,0 +1,336 @@
+
+  
+  
+  
+
+  .side-panel .due-date-button {
+    background-color: #f8f9fa;
+    border: 1px solid #edf4ff;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    text-align: left; 
+  }
+  
+  .side-panel button[type="submit"],
+  .side-panel .due-date-button {
+    color: #495057;
+    background-color: #ffffff;
+    border: 1px solid #edf4ff;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  
+  .side-panel button[type="submit"]:hover,
+  .side-panel .close-btn:hover,
+  .side-panel .due-date-button:hover {
+    border: 1px solid #000000;
+  }
+  
+  
+  .side-panel.open {
+    transform: translateX(0);
+  }
+
+  .side-panel .SidePanel-Title input {
+    width: 100%;
+    background-color: #fff; 
+    border: 1px solid #ced4da;  
+    padding: 10px;
+    font-size: 24px;
+    font-weight: bold; 
+    box-sizing: border-box; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  
+  .side-panel .SidePanel-Title input:hover {
+    border: 1px solid #000; 
+  }
+  
+  .side-panel .SidePanel-Assignee {
+    width: 100%;
+    background-color: #fff; 
+    border: 1px solid #ffffff;  
+    font-size: 20px;
+    box-sizing: border-box; 
+  }
+  
+  .side-panel .SidePanel-Assignee input:hover {
+    border: 1px solid #000; 
+  }
+  
+  .side-panel .SidePanel-Description textarea {
+    width: 97%;
+    height: 80px;
+  }
+  
+  .side-panel .SidePanel-Description textarea:hover{
+    border: 1px solid #000;
+  }
+  
+  .side-panel .SidePanel-Header {
+  margin-bottom: 2rem;
+  
+  }
+  
+  
+  .side-panel .Select__control {
+    border: 1px solid #ced4da;
+    min-height: 38px;
+  }
+
+
+  .side-panel {
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    overflow-y: auto; 
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 350px; 
+    z-index: 10; 
+  }
+  
+  
+  .side-panel .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #495057;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+  }
+  
+  .side-panel .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; 
+  }
+  
+  .side-panel .form-group label {
+    width: 80px;
+    margin-right: 60px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  
+  .side-panel .form-group input[type="text"],
+  .side-panel .form-group select,
+  .side-panel .form-group textarea {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #edf4ff;
+    border-radius: 4px;
+    width: auto; 
+  }
+  
+  
+  
+  .side-panel .due-date-picker {
+    position: relative;
+    width: auto; 
+  }
+  
+  
+  .side-panel .calendar-dropdown {
+    position: absolute;
+    z-index: 2;
+    top: 40px;
+    left: 0;
+    width: auto; 
+    background: white;
+    border: 1px solid #ced4da;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  @media (min-width: 768px) {
+    .side-panel .calendar-dropdown {
+      width: auto; 
+    }
+  }
+
+  .SidePanel-Header {
+    display: flex;
+  }
+  
+  
+  .task-action-btn {
+    padding: 5px 10px !important;
+    margin-right: 10px !important; 
+    cursor: pointer !important;
+    border: none !important;
+    border: 1px solid !important;
+    border-radius: 5px !important;
+    font-size: 16px !important;
+    color: rgb(0, 0, 0) !important;
+    transition: background-color 0.3s ease !important;
+    font-family: 'Roboto', sans-serif !important;
+    line-height:1;
+    
+  }
+  
+  .complete-task-button {
+    background-color: #ffffff;
+    border-color: #000;
+  }
+  
+  .complete-task-button:hover, .complete-task-button.completed {
+    background-color: #d4ffd4;
+    border-color: #479d47;
+  }
+  
+  .delete-task-button {
+    background-color: #ffffff;
+    border-color: #000;
+  }
+  
+  .delete-task-button:hover {
+    background-color: #ffaaa7;
+    border-color: #ff3029;
+  }
+
+  .multi-select-dropdown {
+    border: 1px solid #ced4da; 
+    padding: 8px;
+    margin-top: 5px;
+    background-color: #ffffff; 
+    border-radius: 5px; 
+    max-height: 150px; 
+    overflow-y: auto; 
+    width: 68%;
+  }
+  
+  
+  .select-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px; 
+  }
+  
+  .select-item input[type="checkbox"] {
+    margin-right: 10px; 
+  }
+  
+  .select-item label {
+    margin: 0; 
+    cursor: pointer; 
+    font-size: 14px; 
+    color: #333; 
+  }
+  
+  .select-item input[type="checkbox"]:checked + label {
+    color: #106ba3; 
+  }
+
+  .due-date-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+
+  .calendar-clear-button {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: none;
+    border-top: 1px solid #ccc;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .date-range {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px; 
+    font-size: 0.9em; 
+    color: #333; 
+  }
+  
+  .date-range span {
+    background-color: #ffffff; 
+    color: rgb(0, 0, 0);
+    padding: 4px 8px;
+    border-radius: 12px;
+  }
+
+  .rdrDefinedRangesWrapper,
+.rdrStaticRange,
+.rdrInputRanges {
+  display: none;
+}
+
+
+
+.rdrDateRangePickerWrapper {
+  font-size: 12px; 
+}
+
+.rdrCalendarWrapper {
+  padding: 5px; 
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+  }
+  
+.modal-content {
+  background-color: #edf4ff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 50%; 
+  max-width: 600px; 
+}
+
+.modal-content {
+  animation-name: modalOpen;
+  animation-duration: 0.4s;
+}
+
+
+@keyframes modalOpen {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.input-error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+  display: block;
+}
+
+.rdrMonth {
+  width: 14rem !important;
+}
