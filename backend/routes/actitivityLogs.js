@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { ActivityLog } = require('../models'); // Assuming all models are exported from an index file
+const { ActivityLog } = require('../models');
 
-// Endpoint to get all activity logs
 router.get('/', async (req, res) => {
     try {
         const logs = await ActivityLog.findAll();
@@ -12,7 +11,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Endpoint to delete an activity log
 router.delete('/:id', async (req, res) => {
     try {
         const log = await ActivityLog.destroy({ where: { id: req.params.id } });
