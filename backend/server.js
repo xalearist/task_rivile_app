@@ -17,9 +17,11 @@ sequelize.sync().then(() => {
   process.exit(1); 
 });
 
+// Pakeiskite 'http://localhost:3000' į jūsų frontend URL, jei jis talpinamas kitur.
+// Change 'http://localhost:3000' to the URL of your frontend if it's hosted elsewhere.
 app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true, 
+  origin: 'http://localhost:3000', // Frontend URL
+  credentials: true, // Allow cookies to be sent
 }));
 
 // Use routes
