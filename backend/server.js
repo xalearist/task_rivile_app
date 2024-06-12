@@ -10,27 +10,28 @@ const authMiddleware = require('./middleware/authMiddleware');
 const app = express();
 app.use(express.json()); 
 
-sequelize.sync().then(() => {
-  console.log('Database & tables created!');
-}).catch(err => {
-  console.error('Failed to sync database:', err);
-  process.exit(1); 
-});
 
 // Pakeiskite 'http://localhost:3000' į jūsų frontend URL, jei jis talpinamas kitur.
 // Change 'http://localhost:3000' to the URL of your frontend if it's hosted elsewhere.
 app.use(cors({
-  origin: 'http://localhost:3000', // Frontend URL
-  credentials: true, // Allow cookies to be sent
+  origin: 'http://localhost:3000',
+  credentials: true, 
 }));
 
-// Use routes
 app.use('/api/auth', userRoutes);
 app.use('/api/tasks', authMiddleware, taskRoutes);
 app.use('/api/activityLogs', activityLogsRoutes);
 
 const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  sequelize.sync().then(() => {
+    console.log('Database & tables created!');
+  }).catch(err => {
+    console.error('Failed to sync database:', err);
+    process.exit(1); 
+  });
+});
 
 
 

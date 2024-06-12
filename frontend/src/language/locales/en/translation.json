@@ -94,6 +94,8 @@
   "cancelSort": "Click to cancel sorting",
   "Title is required": "Title is required",
   "Category is required": "Category is required",
-  "Invalid email or password": "Invalid email or password"
+  "Invalid email or password": "Invalid email or password",
+  "Deleted": "Deleted",
+  "Updated": "Updated"
   
 }

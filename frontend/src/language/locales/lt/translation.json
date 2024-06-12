@@ -94,5 +94,7 @@
   "cancelSort": "Spustelėkite, kad atšauktumėte rūšiavimą",
   "Title is required": "Pavadinimas būtinas",
   "Category is required": "Kategorija būtina",
-  "Invalid email or password": "Neteisingas elektroninis paštas arba slaptažodis"
+  "Invalid email or password": "Neteisingas elektroninis paštas arba slaptažodis",
+  "Deleted": "Ištrinta",
+  "Updated": "Atnaujinta"
 }

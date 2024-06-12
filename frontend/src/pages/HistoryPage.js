@@ -71,7 +71,8 @@ const HistoryPage = () => {
             dataIndex: 'action',
             key: 'action',
             filters: filters.action,
-            onFilter: (value, record) => record.action.includes(value)
+            onFilter: (value, record) => record.action.includes(value),
+            render: (text) => t(text)
         },
         {
             title: t('Task Title'),
@@ -124,7 +125,7 @@ const HistoryPage = () => {
                         cancelSort: t('cancelSort')
                     }}
                     scroll={{ x: true }} 
-                    pagination={{ pageSize: 10 }} 
+                    pagination={{ pageSize: 9 }} 
                 />
             </div>
         </div>

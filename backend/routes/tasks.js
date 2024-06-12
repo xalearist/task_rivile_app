@@ -78,14 +78,15 @@ router.put('/:id', authMiddleware, async (req, res) => {
       return res.status(404).json({ message: 'No task found with that ID' });
     }
 
-    // Only process if more than 1 second has passed since the last update
     if (timeSinceLastUpdate > 1000) {
+      const previousProgressStatus = task.progressStatus;
+
       const updatedTask = await task.update(req.body);
       if (!updatedTask) {
         return res.status(404).json({ message: 'Failed to update the task' });
       }
 
-      if (task.progressStatus === updatedTask.progressStatus) {
+      if (previousProgressStatus === updatedTask.progressStatus) {
         await ActivityLog.create({
           taskId: updatedTask.id,
           userId: req.user.id,
@@ -96,7 +97,7 @@ router.put('/:id', authMiddleware, async (req, res) => {
         });
       }
 
-      lastUpdates[req.params.id] = now; // Update the last update time
+      lastUpdates[req.params.id] = now;
       res.json(updatedTask);
     } else {
       res.status(429).json({ message: 'Update too frequent' });
@@ -108,22 +109,30 @@ router.put('/:id', authMiddleware, async (req, res) => {
 });
 
 // DELETE a task
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authMiddleware, async (req, res) => {
   try {
-    const deletedTask = await Task.destroy({ where: { id: req.params.id } });
-    if (!deletedTask) {
+    const task = await Task.findOne({ where: { id: req.params.id } });
+    if (!task) {
       return res.status(404).json({ message: 'No task found with that ID' });
     }
+
+    const taskId = task.id;
+    const taskTitle = task.title;
+    const userId = req.user.id;
+    const userName = `${req.user.firstName} ${req.user.lastName}`;
+
     await ActivityLog.create({
-      taskId: req.params.id,
-      userId: req.user.id,
-      taskTitle: deletedTask.title,
-      userName: `${req.user.firstName} ${req.user.lastName}`,
+      taskId: taskId,
+      userId: userId,
+      taskTitle: taskTitle,
+      userName: userName,
       action: 'Deleted',
-      details: `Task deleted by ${req.user.firstName} ${req.user.lastName}`
+      details: `Task deleted by ${userName}`
     });
 
-    res.json({ message: 'Task deleted', taskId: req.params.id });
+    await Task.destroy({ where: { id: taskId } });
+
+    res.json({ message: 'Task deleted', taskId: taskId });
   } catch (error) {
     console.error('Failed to delete task:', error);
     res.status(500).json({ message: 'Error deleting task', error });

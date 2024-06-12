@@ -90,19 +90,19 @@ function TaskPage({ tasks, setTasks }) {
 
     const deleteTask = async (taskId) => {
         try {
-            const response = await fetch(`${BACKEND_URL_API}/api/tasks/${taskId}`, {
+            const response = await fetch(`${process.env.REACT_APP_AUTH_URL}/api/tasks/${taskId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             });
-
+    
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(`Failed to delete task with status: ${response.status}, ${errorData.message}`);
             }
-
+    
             setTasks(prevTasks => prevTasks.filter(t => t.id !== taskId));
         } catch (error) {
             console.error('Failed to delete task:', error);

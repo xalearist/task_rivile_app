@@ -3,16 +3,22 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/sequelize');
 
 const ActivityLog = sequelize.define('ActivityLog', {
-  taskId: { type: DataTypes.INTEGER, references: { model: 'Tasks', key: 'id' } },
+  taskId: { type: DataTypes.INTEGER, allowNull: false }, // No foreign key reference
   userId: { type: DataTypes.INTEGER, references: { model: 'Users', key: 'id' } },
   action: { type: DataTypes.STRING, allowNull: false },
   taskTitle: { type: DataTypes.STRING, allowNull: true },
   userName: { type: DataTypes.STRING, allowNull: true },
   details: { type: DataTypes.STRING, allowNull: true },
-  date: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
+  date: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+  createdAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
+  updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
+}, {
+  timestamps: true 
 });
 
 module.exports = ActivityLog;
+
+
 
 
 
